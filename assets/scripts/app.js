@@ -1,13 +1,9 @@
-const initialResult = 0;
-let currentResult = initialResult;
+const defaultResult = 0;
+let currentResult = defaultResult;
 
-currentResult = ((currentResult + 10) * 3) / 2 - 1;
+function add() {
+  currentResult = currentResult + userInput.value;
+  outputResult(currentResult, "");
+}
 
-// quotes
-// let calculationDescription = "((" + initialResult + " + 10) * 3) / 2 - 1";
-// template literal (using backtick)
-let calculationDescription = `(( ${initialResult} + 10) * 3) / 2 - 1`;
-
-let errorMessage = "An error\nocurred!"; // with using css [white-space: pre;]
-
-outputResult(currentResult, calculationDescription);
+addBtn.addEventListener("click", add);
