@@ -7,6 +7,13 @@
     <title>Basics</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles/app.css" />
+    <!-- 
+      script파일을 헤드에서 import하면 html파싱을 하기 전에 실행하므로 오류발생가능성이 있음
+      defer를 이용하면 script파일을 먼저 다운로드만 하고 html파싱을 끝난 후 script파일을 실행함, 순서 보장
+      async를 이용하면 html파싱전에 script파일을 최대한 빨리 다운받고 실행함 -> html과 상관없는 백그라운드 데이터를 받을 때 사용, 순서 보장하지 않음
+     -->
+    <script src="./assets/scripts/vendor.js" defer></script>
+    <script src="./assets/scripts/app.js" defer></script>
   </head>
   <body>
     <header>
@@ -26,8 +33,5 @@
       <h2 id="current-calculation">0</h2>
       <h2>Result: <span id="current-result">0</span></h2>
     </section>
-
-    <script src="./assets/scripts/vendor.js"></script>
-    <script src="./assets/scripts/app.js"></script>
   </body>
 </html>
