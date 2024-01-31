@@ -12,15 +12,28 @@ const STRONG_ATTACK_VALUE = 17;
 const MONSTER_ATTACK_VALUE = 14;
 const HEAL_VALUE = 20;
 
-// let enteredValue = prompt("Maximun life for you ans the monster.", "100");
-let enteredValue = 100;
+function getMaxLifeValues() {
+  let enteredValue = prompt("Maximun life for you ans the monster.", "100");
 
-let chosenMaxLife = parseInt(enteredValue);
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
+  const parsedValue = parseInt(enteredValue);
+  if (isNaN(parsedValue) || parsedValue <= 0) {
+    throw { message: "Invalid user input. not a number!" };
+  }
+  return parsedValue;
+}
+let chosenMaxLife;
+
+try {
+  chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+  console.log(error);
   chosenMaxLife = 100;
+  console.log("You entered something wrong, default value of 100 was used.");
 }
 
 let battleLog = [];
+let lastLoggedEntry;
+
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
 let hasBonusLife = true;
@@ -152,21 +165,25 @@ function pringLogHandler() {
   // }
 
   //* while loop
-  let i = 0;
+  let j = 0;
   while (j < 3) {
     console.log("----------");
     j++;
   }
 
-  let j = 0;
+  let i = 0;
   //* for ... of loop: only use in array, can't access an index of element
   for (const log of battleLog) {
-    console.log(`#${j}`);
-    //* for ... in loop: only use in object
-    for (const key in log) {
-      console.log(`${key} => ${log[key]}`);
+    if ((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i) {
+      console.log(`#${i}`);
+      //* for ... in loop: only use in object
+      for (const key in log) {
+        console.log(`${key} => ${log[key]}`);
+      }
+      lastLoggedEntry = i;
+      break;
     }
-    j++;
+    i++;
   }
 }
 
