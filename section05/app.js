@@ -1,3 +1,5 @@
+"use strict"; // use strict mode, strict mode is diable some behaviors
+
 /**
  * {
  *  let test = 5;
@@ -33,3 +35,12 @@ console.log(letName); // error: access before initialization
 
 var varName = "big"; // declare + initialize
 let letName = "person"; // only declare
+
+/**
+ * primitive vs reference (pdf파일 참조)
+ * primitive values (원시 값)
+ * strings, numbers, booleans, null, undefined. symbol
+ *
+ * reference values(참조 값)
+ * all other objects
+ */
